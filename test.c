@@ -7,8 +7,14 @@
 static int assertionCount = 0;
 static int errorCount = 0;
 
+void printArray(int arr[], int size)
+{
+    for (int i=0; i < size; i++) printf("%d ", arr[i]);
+		printf("\n");
+}
+
 // Compare arrays helper
-static int
+int
 compareArrays(int a[], int b[], int n)
 {
 	for (int i=0; i<n; ++i)
@@ -23,27 +29,23 @@ compareArrays(int a[], int b[], int n)
 }
 
 static void
-testMergeSort(int arr[], int expected_arr[], int n)
+testMergeSort(int* arr, int* expected_arr, int n)
 {
+	printArray(arr, n);
 	mergeSort(arr, 0, n);
+	printArray(arr, n);
 
-	if (!compareArrays(arr, expected_arr, n))
+	if (compareArrays(arr, expected_arr, n))
 	{
 		errorCount++;
 
 	  fprintf(stderr, "\033[31m");
 	  fprintf(stderr,"  (✖) Error");
-		// printf("\n  Array: ");
-		// printArray(original, n);
-		// printf("\n  Expected: ");
-		// printArray(expected_arr, n);
-		// printf("\n  Got: ");
-		// printArray(arr, n);
 	  fprintf(stderr, "\n\033[0m");
 	  fprintf(stderr, "\n");
   } else
   {
-    printf("\033[32m.\033[0m");
+    printf("\033[32m  (✓) Test passed\033[0m\n");
   }
   assertionCount++;
 }
@@ -51,17 +53,19 @@ testMergeSort(int arr[], int expected_arr[], int n)
 int
 main()
 {
-	int arr[3] = {5, 0, 1};
-	int expected[3] = {0, 1, 5};
-	testMergeSort(arr, expected, 3);
-
-	int arr0[7] = {7, 4, 1, 0, 3, 2, 5};
-	int expected0[7] = {0, 1, 2, 3, 4, 5, 7};
-	testMergeSort(arr0, expected0, 7);
-
+	// TODO: gotta implement a shorter test
 	int arr1[5] = {4, 5, 8, 1, 19};
-	int expected1[7] = {1, 4, 5, 8, 19};
-	testMergeSort(arr1, expected1, 7);
+	int expected1[5] = {1, 4, 5, 8, 19};
+
+	int *p_arr1;
+	int *p_expected1;
+
+	p_arr1 = malloc(5*sizeof(int*));
+	p_expected1 = malloc(5*sizeof(int*));
+
+	p_arr1 = arr1;
+	p_expected1 = expected1;
+	testMergeSort(p_arr1, p_expected1, 5);
 
   // Log total errors.
   printf("\n");

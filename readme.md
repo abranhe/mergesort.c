@@ -36,12 +36,13 @@ $ clib install abranhe/mergesort.c
 int main()
 {
 	int arr[] = {10, 7, 12, 27, 30};
-	int arr_size = sizeof(arr)/sizeof(arr[0]);
 
-	mergeSort(arr, 0, arr_size - 1);
+	mergeSort(arr, 0, 5);
 	// 7 10 12 27 30
 }
 ```
+
+See a real [example][example].
 
 ## API
 
@@ -68,7 +69,8 @@ int main()
 <!-------------------- Links ------------------------>
 [abranhe]: https://github.com/abranhe
 [abranhe-img]: https://avatars3.githubusercontent.com/u/21347264?s=50
-[license]: https://github.com/abranhe/open-on-npm/blob/master/license
+[license]: https://github.com/abranhe/mergesort.c/blob/master/license
+[example]: https://github.com/abranhe/mergesort.c/blob/master/example.c
 [travis-badge]: https://img.shields.io/travis/abranhe/mergesort.c.svg
 [travis-status]: https://travis-ci.org/abranhe/mergesort.c
 [coverage-badge]: https://img.shields.io/coveralls/abranhe/mergesort.c.svg

@@ -1,26 +1,24 @@
 #include <stdio.h>
 #include "mergesort.h"
 
-void printArray(int A[], int size)
+void printArray(int arr[], int size)
 {
-    int i;
-    for (i=0; i < size; i++)
-        printf("%d ", A[i]);
-    printf("\n");
+    for (int i=0; i < size; i++) printf("%d ", arr[i]);
+		printf("\n");
 }
 
 int
 main()
 {
-    int arr[] = {10, 7, 12, 27, 30};
-    int arr_size = sizeof(arr)/sizeof(arr[0]);
+    int arr[] = {4, 5, 8, 1, 19};
+    int size = sizeof(arr)/sizeof(arr[0]);
 
     printf("Given array is \n");
-    printArray(arr, arr_size);
+    printArray(arr, size);
 
-    mergeSort(arr, 0, arr_size - 1);
+    mergeSort(arr, 0, size - 1);
 
     printf("\nSorted array is \n");
-    printArray(arr, arr_size);
+    printArray(arr, size);
     return 0;
 }
